@@ -46,18 +46,17 @@ function onSearch(event) {
 }
 
 function onLoadMore() {
-  fetchHits();
-  scroll();
+  fetchHits().then(scroll());
 }
 
 function fetchHits() {
   loadMoreBtn.disable();
 
-  apiService.fetchArticles().then(hits => {
+  return apiService.fetchArticles().then(hits => {
     appendHitsMarkup(hits);
     loadMoreBtn.enable();
     console.log(hits.length);
-    if (hits.length === 0) {
+    if (apiService.fetchArticles.length <= 12) {
       loadMoreBtn.hide();
       return error({
         text: 'Its all images!',
