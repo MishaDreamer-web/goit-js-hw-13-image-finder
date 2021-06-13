@@ -56,7 +56,7 @@ function fetchHits() {
     appendHitsMarkup(hits);
     loadMoreBtn.enable();
     console.log(hits.length);
-    if (apiService.fetchArticles.length <= 12) {
+    if (hits.length < 12) {
       loadMoreBtn.hide();
       return error({
         text: 'Its all images!',
