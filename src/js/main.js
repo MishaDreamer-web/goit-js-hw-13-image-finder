@@ -46,7 +46,7 @@ function onSearch(event) {
 }
 
 function onLoadMore() {
-  fetchHits().then(scroll());
+  fetchHits().then(scroll);
 }
 
 function fetchHits() {
